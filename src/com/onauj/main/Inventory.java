@@ -25,6 +25,10 @@ public class Inventory {
 	private int offsetSize;
 	
 	public void tick() {
+		
+		initialPosition = (Game.WIDTH/2) - (Game.pxSize*items.length)/2;
+		offsetY = Game.HEIGHT-(Game.pxSize+offset);
+		offset = 36;
 		if(isPressed) {
 			isPressed = false;
 			if(mx >= initialPosition && mx <initialPosition+ (Game.pxSize*items.length) && my >= offsetY && my < Game.HEIGHT-Game.pxSize/2-1) {

@@ -29,8 +29,8 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener,M
 	private Thread thread;
 	private boolean isRunning = true;
 	
-	public static final int WIDTH = 1280;
-	public static final int HEIGHT = 640;
+	public static  int WIDTH = 1280;
+	public static  int HEIGHT = 640;
 	public static final int SCALE = 1;
 	
 	private BufferedImage image;
@@ -78,12 +78,14 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener,M
 		
 		inventory.tick();
 		
+		this.WIDTH = this.getWidth();
+		this.HEIGHT = this.getHeight();
 	}
 	
 	public void initFrame(){
 		frame = new JFrame("Minecraft");
 		frame.add(this);
-		frame.setResizable(false);
+		frame.setResizable(true);
 		frame.pack();
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

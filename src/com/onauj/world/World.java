@@ -54,6 +54,8 @@ public class World {
 	}
 	
 	public void render(Graphics g){
+
+		
 		int xstart = Camera.x >> 4;
 		int ystart = Camera.y >> 4;
 		
