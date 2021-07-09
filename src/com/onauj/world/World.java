@@ -18,9 +18,11 @@ public class World {
 		tiles = new Tile[WIDTH*HEIGHT];
 		for(int xx = 0; xx < WIDTH; xx++) {
 			for(int yy = 0; yy < HEIGHT; yy++) {
-				if(yy >= (Game.HEIGHT/TILE_SIZE) - 3) {
+				if(yy >= (Game.HEIGHT/TILE_SIZE) - 1 || xx == Game.WIDTH/TILE_SIZE-1 || xx == 0 || yy == 0) {
 					
 					tiles[xx+yy*WIDTH] = new GrassTile((xx*TILE_SIZE),yy*TILE_SIZE,Tile.TILE_GRASS);
+					tiles[xx+yy*WIDTH].Solid = true;
+					
 				}else {
 					tiles[xx+yy*WIDTH] = new AirTile(xx*TILE_SIZE,yy*TILE_SIZE,Tile.TILE_WOOD);
 				}

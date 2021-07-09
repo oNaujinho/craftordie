@@ -4,8 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 
-
+import com.onauj.world.AirTile;
+import com.onauj.world.Camera;
+import com.onauj.world.GrassTile;
 import com.onauj.world.Tile;
+import com.onauj.world.World;
 
 public class Inventory {
 	
@@ -38,6 +41,31 @@ public class Inventory {
 				isPressed = false;
 				selected = -1;
 			}
+		}
+		
+		if(isPlaceItem && selected != -1) {
+			isPlaceItem = false;
+			mx = (int)mx/Game.SCALE+Camera.x;
+			my = (int)my/Game.SCALE+Camera.y;
+			
+			int tilex = mx/Game.pxSize;
+			int tiley = my/Game.pxSize;
+			
+			if(World.tiles[tilex+tiley*World.WIDTH].Solid == false) {
+				if(items[selected] == "dirt") {
+					World.tiles[tilex+tiley*World.WIDTH] = new GrassTile((tilex*World.TILE_SIZE),tiley*World.TILE_SIZE,Tile.TILE_GRASS);
+					World.tiles[tilex+tiley*World.WIDTH].Solid = true;
+				}else if(items[selected] == "stone") {
+					World.tiles[tilex+tiley*World.WIDTH] = new GrassTile((tilex*World.TILE_SIZE),tiley*World.TILE_SIZE,Tile.TILE_STONE);
+					World.tiles[tilex+tiley*World.WIDTH].Solid = true;
+				}
+				
+				
+				if(World.isFree((Game.player.getX()-Game.player.getWidth()/3)-10, Game.player.getY()+Game.player.getHeight()/3) == false) {
+					World.tiles[tilex+tiley*World.WIDTH] = new AirTile((tilex*World.TILE_SIZE),tiley*World.TILE_SIZE,Tile.TILE_DIAMOND);
+				}
+			}
+			
 		}
 	}
 	

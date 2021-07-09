@@ -7,15 +7,17 @@ import javax.imageio.ImageIO;
 
 public class Spritesheet {
 
-	private String[] path = {"player", "blocks"};
+	private String[] path = {"player", "blocks", "sky"};
 	private BufferedImage spritesheet_blocks;
 	private BufferedImage spritesheet_player;
+	private BufferedImage spritesheet_sky;
 	
 	public Spritesheet()
 	{
 		try {
 			spritesheet_blocks = ImageIO.read(getClass().getResource("/spritesheet_blocks.png"));
 			spritesheet_player = ImageIO.read(getClass().getResource("/spritesheet_player.png"));
+			spritesheet_sky = ImageIO.read(getClass().getResource("/spritesheet_sky.png"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -36,6 +38,9 @@ public class Spritesheet {
 			sprite = spritesheet_player.getSubimage(x, y, width, height);
 		}else if (type == path[1].toString()) {
 			sprite = spritesheet_blocks.getSubimage(x, y, width, height);
+		}
+		else if (type == path[2].toString()) {
+			sprite = spritesheet_sky.getSubimage(x, y, width, height);
 		}
 		
 		return sprite;

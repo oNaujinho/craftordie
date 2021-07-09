@@ -78,8 +78,8 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener,M
 		
 		inventory.tick();
 		
-		this.WIDTH = this.getWidth();
-		this.HEIGHT = this.getHeight();
+		WIDTH = this.getWidth();
+		HEIGHT = this.getHeight();
 	}
 	
 	public void initFrame(){
@@ -132,6 +132,7 @@ public class Game extends Canvas implements Runnable,KeyListener,MouseListener,M
 		
 		/*Renderização do jogo*/
 
+		g.drawImage(spritesheet.getSprite(0, 0, 728, 410, "sky"), 0,  0,WIDTH*SCALE,HEIGHT*SCALE,null);
 		world.render(g);
 		Collections.sort(entities,Entity.nodeSorter);
 		for(int i = 0; i < entities.size(); i++) {
